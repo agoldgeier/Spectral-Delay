@@ -19,13 +19,13 @@ function [] = spectralDelayTest()
 polyrhythm = spectralDelay('PoolIR.wav', 3, 300, 0.4, 0.7);
 noiseSweep = spectralDelay('PoolIR.wav', 75, 300, 1, 0.5);
 krazyVerb  = spectralDelay('HornHit.wav', 15, 150, 1, 0.7);
-bubbles    = spectralDelay('PoolIR.wav', 50, 300, 1, 0.9);
+lazer    = spectralDelay('PoolIR.wav', 50, 300, -1, 0.9);
 
 % ...and export into some files
 audiowrite('polyrhythm.wav',polyrhythm,44100);
 audiowrite('noiseSweep.wav',noiseSweep,44100);
 audiowrite('krazyVerb.wav',krazyVerb,44100);
-audiowrite('bubbles.wav',bubbles,44100);
+audiowrite('lazer.wav',lazer,44100);
 
 % You can now play these files at your own discretion.
 
@@ -45,6 +45,6 @@ title('krazy verb');
 
 subplot(224);
 imagesc(arg450_spectrumAnalyzer('bubbles.wav', 1024, 256, 'hamming'));
-title('bubbles');
+title('lazer');
 
 end

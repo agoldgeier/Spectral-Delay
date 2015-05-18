@@ -63,11 +63,6 @@ end
 
 maxVal = max(max(audio), min(audio)*-1);
 
-
-% MIGHT IT BE FASTER TO COMBINE STEPS TWO AND THREE (iterate through all
-% bands only once). But not by much, if we have a reasonable number of
-% bands.
-
 % Step 1: create bands. Input: 1xM audio matrix. Output: NxM audio matrix
 audioMatrix = splitBands(numBands, audio, fs);
 
@@ -86,8 +81,6 @@ output = sumBands(audioMatrix, maxVal);
 end
 
 function [ audioMatrix ] = splitBands(numBands, audio, fs)
-
-% validate inputs
 
 % I want the bands to be split equally on a log scale - generating an array
 % of successive corner freuqnecies.
@@ -125,8 +118,6 @@ end
 end
 
 function [ delayMatrix ] = generateDelays(numBands, baseEcho, echoSkew, decay, fs)
-
-% validate inputs
 
 % First, let's create an array of delay lengths
 %   Let's do some more math:
